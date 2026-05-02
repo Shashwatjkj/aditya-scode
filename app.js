@@ -39,7 +39,18 @@ app.get("/", (req, res) => {
       h1 {
         font-size: clamp(36px, 8vw, 72px);
         font-weight: bold;
-        background: linear-gradient(90deg, #00f5ff, #00ffcc, #66ff66, #ffff66, #ff66cc);
+        background: linear-gradient(
+                    90deg,
+                    #aeefff,
+                    #6dd5fa,
+                    #2193b0,
+                    #6dd5fa,
+                    #aeefff
+                    );
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shine 3s linear infinite;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         animation: glow 2s infinite alternate;
