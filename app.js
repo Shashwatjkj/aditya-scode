@@ -12,8 +12,13 @@ app.get("/", (req, res) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-      body {
+      * {
         margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
         height: 100vh;
         display: flex;
         justify-content: center;
@@ -21,40 +26,44 @@ app.get("/", (req, res) => {
         background: linear-gradient(135deg, #f6d365, #fda085);
         font-family: 'Segoe UI', sans-serif;
         overflow: hidden;
-        color: #fff;
+        text-align: center;
       }
 
       .container {
-        text-align: center;
-        animation: fadeIn 2s ease-in-out;
+        padding: 20px;
+        animation: fadeIn 1.5s ease-in-out;
       }
 
+      /* 🌈 Colorful gradient text */
       h1 {
-        font-size: 65px;
-        letter-spacing: 3px;
-        text-shadow: 0 0 20px rgba(255,255,255,0.9);
+        font-size: clamp(36px, 8vw, 72px);
+        font-weight: bold;
+        background: linear-gradient(90deg, #ff4d4d, #ffcc00, #33cc33, #3399ff, #cc33ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         animation: glow 2s infinite alternate;
       }
 
       p {
-        font-size: 22px;
-        margin-top: 15px;
+        margin-top: 12px;
+        font-size: clamp(16px, 4vw, 22px);
+        color: #ffffff;
         opacity: 0.9;
       }
 
       @keyframes glow {
         from {
-          text-shadow: 0 0 10px #fff, 0 0 20px #ffd700;
+          text-shadow: 0 0 10px rgba(255,255,255,0.6);
         }
         to {
-          text-shadow: 0 0 25px #fff, 0 0 50px #ffae00;
+          text-shadow: 0 0 25px rgba(255,255,255,1);
         }
       }
 
       @keyframes fadeIn {
         from {
           opacity: 0;
-          transform: translateY(30px);
+          transform: translateY(25px);
         }
         to {
           opacity: 1;
@@ -62,10 +71,9 @@ app.get("/", (req, res) => {
         }
       }
 
-      /* Floating sun particles */
+      /* ☀️ Floating suns */
       .sun {
         position: absolute;
-        font-size: 20px;
         animation: floatUp linear infinite;
       }
 
@@ -86,7 +94,7 @@ app.get("/", (req, res) => {
 
     <div class="container">
       <h1>Good Morning ☀️</h1>
-      <p>Wishing you a day full of happiness and sunshine ✨</p>
+      <p>Have a bright and beautiful day ✨</p>
     </div>
 
     <script>
@@ -95,7 +103,7 @@ app.get("/", (req, res) => {
         sun.classList.add("sun");
         sun.innerHTML = "☀️";
         sun.style.left = Math.random() * 100 + "vw";
-        sun.style.fontSize = (Math.random() * 20 + 10) + "px";
+        sun.style.fontSize = (Math.random() * 20 + 12) + "px";
         sun.style.animationDuration = (Math.random() * 3 + 2) + "s";
 
         document.body.appendChild(sun);
