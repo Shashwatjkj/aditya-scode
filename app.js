@@ -23,22 +23,23 @@ app.get("/", (req, res) => {
         display: flex;
         justify-content: center;
         align-items: center;
-        background: linear-gradient(135deg, #f6d365, #fda085);
         font-family: 'Segoe UI', sans-serif;
         overflow: hidden;
         text-align: center;
+        background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
       }
 
       .container {
         padding: 20px;
+        z-index: 2;
         animation: fadeIn 1.5s ease-in-out;
       }
 
-      /* 🌈 Colorful gradient text */
+      /* 🌈 Colorful text */
       h1 {
         font-size: clamp(36px, 8vw, 72px);
         font-weight: bold;
-        background: linear-gradient(90deg, #ff4d4d, #ffcc00, #33cc33, #3399ff, #cc33ff);
+        background: linear-gradient(90deg, #00f5ff, #00ffcc, #66ff66, #ffff66, #ff66cc);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         animation: glow 2s infinite alternate;
@@ -53,7 +54,7 @@ app.get("/", (req, res) => {
 
       @keyframes glow {
         from {
-          text-shadow: 0 0 10px rgba(255,255,255,0.6);
+          text-shadow: 0 0 10px rgba(255,255,255,0.5);
         }
         to {
           text-shadow: 0 0 25px rgba(255,255,255,1);
@@ -71,9 +72,24 @@ app.get("/", (req, res) => {
         }
       }
 
-      /* ☀️ Floating suns */
-      .sun {
+      /* ✨ Glitter stars */
+      .star {
         position: absolute;
+        background: white;
+        border-radius: 50%;
+        opacity: 0.8;
+        animation: twinkle linear infinite;
+      }
+
+      @keyframes twinkle {
+        0%, 100% { opacity: 0.2; transform: scale(0.5); }
+        50% { opacity: 1; transform: scale(1.2); }
+      }
+
+      /* Floating sparkle dots */
+      .sparkle {
+        position: absolute;
+        color: #ffffff;
         animation: floatUp linear infinite;
       }
 
@@ -94,26 +110,47 @@ app.get("/", (req, res) => {
 
     <div class="container">
       <h1>Good Morning ☀️</h1>
-      <p>Have a bright and beautiful day ✨</p>
+      <p>Shine bright like the morning sky ✨</p>
     </div>
 
     <script>
-      function createSun() {
-        const sun = document.createElement("div");
-        sun.classList.add("sun");
-        sun.innerHTML = "☀️";
-        sun.style.left = Math.random() * 100 + "vw";
-        sun.style.fontSize = (Math.random() * 20 + 12) + "px";
-        sun.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      // ⭐ Glitter stars
+      function createStar() {
+        const star = document.createElement("div");
+        star.classList.add("star");
+        const size = Math.random() * 3 + 1;
 
-        document.body.appendChild(sun);
+        star.style.width = size + "px";
+        star.style.height = size + "px";
+        star.style.left = Math.random() * 100 + "vw";
+        star.style.top = Math.random() * 100 + "vh";
+        star.style.animationDuration = (Math.random() * 2 + 1) + "s";
+
+        document.body.appendChild(star);
 
         setTimeout(() => {
-          sun.remove();
+          star.remove();
+        }, 3000);
+      }
+
+      // ✨ Floating sparkles
+      function createSparkle() {
+        const sparkle = document.createElement("div");
+        sparkle.classList.add("sparkle");
+        sparkle.innerHTML = "✨";
+        sparkle.style.left = Math.random() * 100 + "vw";
+        sparkle.style.fontSize = (Math.random() * 10 + 10) + "px";
+        sparkle.style.animationDuration = (Math.random() * 3 + 2) + "s";
+
+        document.body.appendChild(sparkle);
+
+        setTimeout(() => {
+          sparkle.remove();
         }, 5000);
       }
 
-      setInterval(createSun, 400);
+      setInterval(createStar, 100);
+      setInterval(createSparkle, 300);
     </script>
 
   </body>
