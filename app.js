@@ -2,32 +2,26 @@ import express from "express";
 
 const app = express();
 
-// Home route
 app.get("/", (req, res) => {
   res.status(200).send(`
   <!DOCTYPE html>
   <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>I Love You Akriti ❤️</title>
+    <title>Good Morning ☀️</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
       body {
+        margin: 0;
         height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        background: radial-gradient(circle at top, #ff758c, #ff7eb3, #1a1a2e);
+        background: linear-gradient(135deg, #f6d365, #fda085);
         font-family: 'Segoe UI', sans-serif;
         overflow: hidden;
-        color: white;
+        color: #fff;
       }
 
       .container {
@@ -36,28 +30,27 @@ app.get("/", (req, res) => {
       }
 
       h1 {
-        font-size: 60px;
+        font-size: 65px;
         letter-spacing: 3px;
+        text-shadow: 0 0 20px rgba(255,255,255,0.9);
         animation: glow 2s infinite alternate;
       }
 
       p {
-        margin-top: 15px;
         font-size: 22px;
+        margin-top: 15px;
         opacity: 0.9;
       }
 
-      /* Glow effect */
       @keyframes glow {
         from {
-          text-shadow: 0 0 10px #fff, 0 0 20px #ff4da6;
+          text-shadow: 0 0 10px #fff, 0 0 20px #ffd700;
         }
         to {
-          text-shadow: 0 0 20px #fff, 0 0 40px #ff1a75;
+          text-shadow: 0 0 25px #fff, 0 0 50px #ffae00;
         }
       }
 
-      /* Fade */
       @keyframes fadeIn {
         from {
           opacity: 0;
@@ -69,8 +62,8 @@ app.get("/", (req, res) => {
         }
       }
 
-      /* Floating hearts */
-      .heart {
+      /* Floating sun particles */
+      .sun {
         position: absolute;
         font-size: 20px;
         animation: floatUp linear infinite;
@@ -92,27 +85,27 @@ app.get("/", (req, res) => {
   <body>
 
     <div class="container">
-      <h1>I Love You Akriti ❤️</h1>
-      <p>You are my everything ✨</p>
+      <h1>Good Morning ☀️</h1>
+      <p>Wishing you a day full of happiness and sunshine ✨</p>
     </div>
 
     <script>
-      function createHeart() {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.fontSize = (Math.random() * 20 + 10) + "px";
-        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      function createSun() {
+        const sun = document.createElement("div");
+        sun.classList.add("sun");
+        sun.innerHTML = "☀️";
+        sun.style.left = Math.random() * 100 + "vw";
+        sun.style.fontSize = (Math.random() * 20 + 10) + "px";
+        sun.style.animationDuration = (Math.random() * 3 + 2) + "s";
 
-        document.body.appendChild(heart);
+        document.body.appendChild(sun);
 
         setTimeout(() => {
-          heart.remove();
+          sun.remove();
         }, 5000);
       }
 
-      setInterval(createHeart, 300);
+      setInterval(createSun, 400);
     </script>
 
   </body>
